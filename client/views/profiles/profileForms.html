@@ -1,0 +1,71 @@
+<template name="profileNew">
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Créer votre Profil</h4>
+				</div>
+				<div class="panel-body">
+					{{#autoForm collection="Profiles" id="profileNew" type="insert"}}
+					    {{>profileFields}}
+					    <div>
+					    	<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Enregistrer</button>
+					    </div>
+					{{/autoForm}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="profileEdit">
+    <div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Editer votre Profil</h4>
+				</div>
+				<div class="panel-body">
+					{{#autoForm collection="Profiles" id="profileEdit" type="update" doc=profile}}
+					    {{>profileFields}}
+					    <div>
+					    	<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Mettre à jour</button>
+					    	<button id="cancel" class="btn btn-default"> Annuler</button>
+					    </div>
+					{{/autoForm}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="profileFields">
+
+
+
+{{>afQuickField name='customImageUrl' label="Choisir avatar" remove-label="Supprimer"}}	
+	{{>afQuickField name='name' placeholder="Votre nom"}}
+	{{>afQuickField name='prenom' placeholder="Votre Prénom"}}
+   {{>afQuickField name='type' noselect="true" options="allowed"}}
+     {{#if afFieldValueIs name="type" value="Société"}}
+   {{>afQuickField name='company' placeholder="Votre société"}}
+   {{/if}}
+     {{#if afFieldValueIs name="type" value="Salarié"}}
+   {{>afQuickField name='company' placeholder="Votre société"}}
+   {{/if}}
+	{{>afQuickField name='title' placeholder="Titre affiché pour votre fiche"}}
+	{{>afQuickField name='availableForHire'}}
+{{#if afFieldValueIs name="availableForHire" value=true}}
+	{{>afQuickField name='interestedIn' noselect="true" options="allowed"}}
+	   {{/if}}
+	{{>afQuickField name='metiers'}}
+	{{>afQuickField name='location' placeholder="Où êtes-vous situé" options="allowed"}}
+	{{>afQuickField name='contact' placeholder="email/twitter/ou autre qui permet de vous contacter (Votre adresse email de votre compte utilisateur n'est pas affiché)"}}
+	{{>afQuickField name='url' placeholder="url de votre site personnel / blog"}}
+	{{>afQuickField name='resumeUrl' placeholder="URL de curriculum vitae / CV hébergé extérieurement (Dropbox, GDrive, etc)"}}
+	{{>afQuickField name='cvPdf' label="Choisir CV en PDF" remove-label="Supprimer"}}	
+	{{>afQuickField name='githubUrl' placeholder="Votre profil public github"}}
+	{{>afQuickField name='linkedinUrl' placeholder="Votre profil public linkeding"}}
+	{{>afQuickField name='stackoverflowUrl' placeholder="Votre profil public stackoverflow"}}
+	{{>afQuickField name='description' rows=8  placeholder="Parlez-nous de ce que vous avez fait"}}
+</template>

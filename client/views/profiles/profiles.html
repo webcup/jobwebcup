@@ -1,0 +1,9 @@
+<template name="profiles">
+	<div class="row">
+		{{#each profiles}}
+			{{>profileSmall}}
+		{{else}}
+			Pas de profils pour l'instant
+		{{/each}}
+	</div>
+</template>

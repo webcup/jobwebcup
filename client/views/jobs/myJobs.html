@@ -1,0 +1,12 @@
+<template name="myJobs">
+	<h3>Mes offres Publié</h3>
+	{{#each jobs}}
+		<div class="panel panel-default">
+			<div class="panel-body">
+				{{>jobSmall}}
+			</div>
+		</div>
+	{{else}}
+		Vous n'avez pas posté d'offres d'emplois.  <a href="{{pathFor 'jobNew'}}">Publier une offre</a> si vous en avez une à offrir.
+	{{/each}}
+</template>

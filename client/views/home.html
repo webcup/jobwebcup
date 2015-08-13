@@ -1,0 +1,35 @@
+<template name="home">
+	<div class="jumbotron container-fluid">
+		<div class="container text-center">
+			<div class="row">
+							<img src="/images/Logo_Webcup.png">
+				<h1>Job Webcup</h1>
+			</div>
+			<div class="row">
+				<p>
+				L'espace d'offres d'emploi de la communautée de la <a href="http://www.webcup.fr/">Webcup</a>.
+					<br><br>
+					Parcourir les <a href="{{pathFor 'jobs'}}">{{getPublishedCount 'jobs'}} offres d'emploi actifs</a> ou de <a href="{{pathFor 'profileNew'}}">créer votre profil</a> pour rejoindre les <a href="{{pathFor 'profiles'}}">{{getPublishedCount 'developers'}} profils enregistrés</a>.
+				</p>
+			</div>
+			
+			<div id="callToAction" class="row">
+				<a class="col-sm-4 col-sm-offset-1 col-xs-12 text-center btn btn-primary btn-md" role="button" href="{{pathFor 'jobNew'}}">Publiez une offre</a>
+				<a class="col-sm-4 col-sm-offset-2 col-xs-12 text-center btn btn-success btn-md" role="button" href="{{pathFor 'profileNew'}}">Créer un profil</a>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				{{>jobsRecent}}
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-12">
+				{{>profilesRecent}}
+			</div>
+		</div>
+	</div>
+</template>

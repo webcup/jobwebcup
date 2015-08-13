@@ -1,0 +1,55 @@
+<template name="jobNew">
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Publier une nouvelle offre</h4>
+				</div>
+  				<div class="panel-body">
+    				{{#autoForm id="jobNew" collection="Jobs" type="insert"}}
+					    {{>jobFields}}
+					    <div>
+					    	<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Publier</button>
+					    </div>
+					{{/autoForm}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="jobEdit">
+    <div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Editer une offre</h4>
+				</div>
+  				<div class="panel-body">
+    				{{#autoForm id="jobEdit" collection="Jobs" doc=job type="update"}}
+					    {{>jobFields}}
+					    <div>
+					    	<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Mettre à jour</button>
+					    	<button id="cancel" class="btn btn-default"> Annuler</button>
+					    </div>
+					{{/autoForm}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="jobFields">
+	{{> afQuickField name='title' label='Titre' placeholder="Titre de l’offre proposée"}}
+    {{> afQuickField name='company' label='Société' placeholder="Nom de l'entreprise qui embauche"}}
+    {{> afQuickField name='location' label='Lieu' firstOption="(Sélectionnez un lieu)" options="allowed"}}
+    {{> afQuickField name='geolocation' label='Geolocalisation'}}
+    {{> afQuickField name='remote' label='à Distance'}}
+    {{> afQuickField name='url' placeholder="URL externe de l'offre d'emploi"}}
+    {{> afQuickField name="jobtype" label='Type' firstOption="(Sélectionnez un type d'emploi)" options="allowed"}}
+    {{> afQuickField name="famille" label='Domaine'}}
+    {{> afQuickField name="metier" label='Vous recherchez'}}
+    {{> afQuickField name="tags" label='Competences'}}
+    {{> afQuickField name='description' rows=8  placeholder="Exposé votre offre et vos attentes"}}
+    {{> afQuickField name='contact' placeholder="email/twitter/ou autre qui permet de vous contacter (Votre adresse email de votre compte utilisateur n'est pas affiché)"}}
+</template>

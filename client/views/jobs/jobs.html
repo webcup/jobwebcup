@@ -1,0 +1,11 @@
+<template name="jobs">
+	{{#each jobs}}
+		<div class="panel panel-default">
+			<div class="panel-body">
+				{{>jobSmall}}
+			</div>
+		</div>
+	{{else}}
+		Aucune offres actuellement
+	{{/each}}
+</template>

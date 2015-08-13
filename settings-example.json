@@ -1,0 +1,10 @@
+{
+  "public" : {
+    "connectionBanner":{
+            "connectionLostText":"Oups. Quelque chose ne va pas.",
+            "tryReconnectText":"Essayez de vous reconnecter maintenant",
+            "reconnectBeforeCountdownText":"Tenter de se reconnecter dans",
+            "reconnectAfterCountdownText":"secondes."
+        }
+  }
+}
