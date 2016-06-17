@@ -29,6 +29,3 @@ Template.jobEdit.events({
 		Router.go("job",{_id:this.job._id});
 	}
 })
-
-
-

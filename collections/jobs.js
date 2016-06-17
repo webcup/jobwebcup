@@ -45,7 +45,7 @@ Jobs.attachSchema(
       allowedValues:LIEUWEBCUP,
       max: 128,
       optional: true
-    },  
+    },
     geolocation: {
     type: String,
             autoform:{
@@ -96,16 +96,16 @@ Jobs.attachSchema(
       autoform: {
         type: "select",
         options: function() {
-  	var docId = '';	
+  	var docId = '';
                docId = AutoForm.getFieldValue('famille');
                if(docId){
                		 return Metiers.find({famille:docId}, {sort: {metier:1}}).map(function (c) {
                    return {label: c.metier, value: c._id};
                });
-               		
-              
+
+
             }else{return;}
-  }   
+  }
     }
     },
     tags: {
@@ -113,7 +113,7 @@ Jobs.attachSchema(
       autoform: {
         type: "select-checkbox-inline",
          options: function() {
-  	var docId = '';	
+  	var docId = '';
                docId = AutoForm.getFieldValue('metier');
                if(docId){
                	var taglist = Metiers.findOne({_id:docId}).tags;
@@ -122,7 +122,7 @@ Jobs.attachSchema(
                    return {label: c.tag, value: c._id};
                });
                		}
-              
+
             }else{return;}
   }
     }
