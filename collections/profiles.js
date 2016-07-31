@@ -94,7 +94,8 @@ Profiles.attachSchema(
       autoform: {
         type: "select",
                 options: function() {
-  	var docId = '';
+                  if (Meteor.isClient) {
+                  var docId = '';
                docId = AutoForm.getFieldValue(this.name.replace('.metier', '.famille'));
                  	//alert(this.name.replace('.metier', '.famille'));
                if(docId){
@@ -102,10 +103,11 @@ Profiles.attachSchema(
                		 return Metiers.find({famille:docId}, {sort: {metier:1}}).map(function (c) {
                    return {label: c.metier, value: c._id};
                });
-               		
-              
+
+
             }else{return;}
-  }      
+          }
+        }
     }
     },
     "metiers.$.tags": {
@@ -113,7 +115,7 @@ Profiles.attachSchema(
       autoform: {
         type: "select-checkbox-inline",
                         options: function() {
-  	var docId = '';	
+  	var docId = '';
 docId = AutoForm.getFieldValue(this.name.replace('.tags', '.metier'))
 
                if(docId){
@@ -124,7 +126,7 @@ docId = AutoForm.getFieldValue(this.name.replace('.tags', '.metier'))
                    return {label: c.tag, value: c._id};
                });
                		}
-              
+
             }else{return;}
   }
     }
@@ -140,7 +142,7 @@ docId = AutoForm.getFieldValue(this.name.replace('.tags', '.metier'))
       allowedValues:LIEUWEBCUP,
       max: 128,
       optional: true
-    }, 
+    },
     description: {
       type: String,
       label: "Description",
@@ -174,13 +176,14 @@ docId = AutoForm.getFieldValue(this.name.replace('.tags', '.metier'))
     },
     tags:{
         type: [String],
+        optional: true,
         autoform:{
             type: 'tags',
             afFieldInput:{
-            	
+
             	}
             }
-      },      
+      },
     contact: {
       type: String,
       label: "Contact Info",
@@ -277,7 +280,7 @@ docId = AutoForm.getFieldValue(this.name.replace('.tags', '.metier'))
 
 Profiles.helpers({
   displayName: function() {
-    return this.name || this.userName;
+    return this.prenom+' '+this.name || this.userName;
   },
   path: function() {
     return 'profiles/' + this._id + '/' + this.slug();

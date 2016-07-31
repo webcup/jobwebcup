@@ -1,5 +1,5 @@
 Meteor.startup(function () {
-  
+
 	if (Meteor.isCordova) {
 		window.alert = navigator.notification.alert;
 	}
@@ -26,6 +26,5 @@ Push.addListener('message', function(notification) {
 		}
 		window.alert(notification.message, alertDismissed, notification.payload.title, "Ok");
 	});
-	
-});
 
+});

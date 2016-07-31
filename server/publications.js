@@ -259,7 +259,7 @@ Meteor.publishComposite('profiles', function() {
         customImageUrl:true
       }
     }),
-    Users.find({ 
+    Users.find({
       isDeveloper: true
     }, {
       fields: {
